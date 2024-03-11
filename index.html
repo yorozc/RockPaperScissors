@@ -7,5 +7,20 @@
 </head>
 <body>
     
+    <script>
+        function getRandomIntInclusive(min, max) {
+        const minCeiled = Math.ceil(min);
+        const maxFloored = Math.floor(max);
+        return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+        function getComputerChoice(){
+            const choices = ["Rock", "Paper", "Scissors"]
+            let choice = getRandomIntInclusive(0, 2)
+            return choices[choice]   
+        }
+
+
+
+    </script>
 </body>
 </html>
