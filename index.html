@@ -12,12 +12,82 @@
         const minCeiled = Math.ceil(min);
         const maxFloored = Math.floor(max);
         return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-}
+        }
         function getComputerChoice(){
             const choices = ["Rock", "Paper", "Scissors"]
             let choice = getRandomIntInclusive(0, 2)
             return choices[choice]   
         }
+        function playRound(playerChoice, computerChoice){
+            playerChoice = playerChoice.toLowerCase()
+            computerChoice = computerChoice.toLowerCase()
+            let tie = "Tie! :-|"
+            let lose = "You Lose! :("
+            let win = "You win! :)"
+
+            if (playerChoice === "rock" ){
+                if (computerChoice === "rock"){
+                    return(tie)
+                }
+                else if (computerChoice === "paper"){
+                    return(lose)
+                }
+                else if(computerChoice === "scissors"){
+                    return(win)
+                }
+            }
+
+            else if (playerChoice === "paper"){
+                if (computerChoice === "rock"){
+                    return(win)
+                }
+                else if (computerChoice === "paper"){
+                    return(tie)
+                }
+                else if(computerChoice === "scissors"){
+                    return(lose)
+                }
+            }
+            else if (playerChoice === "scissors"){
+                if (computerChoice === "rock"){
+                    return(lose)
+                }
+                else if (computerChoice === "paper"){
+                    return(win)
+                }
+                else if(computerChoice === "scissors"){
+                    return(tie)
+                }
+            }
+        }
+
+        function playGame(num_of_rounds){
+            p_score = 0
+            c_score = 0
+
+            for(let i = 0; i < num_of_rounds; i++){
+                const playerChoice = prompt("Rock, Paper, or Scissors: ")
+                const computerChoice = getComputerChoice()
+                play = playRound(playerChoice, computerChoice)
+                console.log(play)
+                if (play === "You win! :)") {
+                    p_score += 1
+                }else if (play === "Tie! :-|"){
+                    continue
+                }
+                else if (play === "You Lose! :("){
+                    c_score += 1
+                }
+            }
+            console.log("Player score: " + p_score)
+            console.log("Computer score: " + c_score)
+        }
+
+        playGame(3)
+
+
+        
+
 
 
 
