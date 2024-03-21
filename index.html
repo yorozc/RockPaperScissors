@@ -18,6 +18,7 @@
             let choice = getRandomIntInclusive(0, 2)
             return choices[choice]   
         }
+
         function playRound(playerChoice, computerChoice){
             playerChoice = playerChoice.toLowerCase()
             computerChoice = computerChoice.toLowerCase()
@@ -25,39 +26,14 @@
             let lose = "You Lose! :("
             let win = "You win! :)"
 
-            if (playerChoice === "rock" ){
-                if (computerChoice === "rock"){
-                    return(tie)
-                }
-                else if (computerChoice === "paper"){
-                    return(lose)
-                }
-                else if(computerChoice === "scissors"){
-                    return(win)
-                }
-            }
-
-            else if (playerChoice === "paper"){
-                if (computerChoice === "rock"){
-                    return(win)
-                }
-                else if (computerChoice === "paper"){
-                    return(tie)
-                }
-                else if(computerChoice === "scissors"){
-                    return(lose)
-                }
-            }
-            else if (playerChoice === "scissors"){
-                if (computerChoice === "rock"){
-                    return(lose)
-                }
-                else if (computerChoice === "paper"){
-                    return(win)
-                }
-                else if(computerChoice === "scissors"){
-                    return(tie)
-                }
+            if ((playerChoice === "rock" && computerChoice === "scissors")
+            || (playerChoice === "paper" && computerChoice === "rock") ||
+            (playerChoice === "scissors" && computerChoice === "paper")){
+                return win
+            }else if (playerChoice === computerChoice){
+                return tie
+            }else{
+                return lose
             }
         }
 
@@ -69,6 +45,8 @@
                 const playerChoice = prompt("Rock, Paper, or Scissors: ")
                 const computerChoice = getComputerChoice()
                 play = playRound(playerChoice, computerChoice)
+                console.log(playerChoice)
+                console.log(computerChoice)
                 console.log(play)
                 if (play === "You win! :)") {
                     p_score += 1
@@ -82,7 +60,6 @@
             console.log("Player score: " + p_score)
             console.log("Computer score: " + c_score)
         }
-
         playGame(3)
 
 
