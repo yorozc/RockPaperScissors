@@ -75,5 +75,9 @@ scissBtn.addEventListener("click", () =>{
     playRound("scissors", getComputerChoice())
 });
 
+//result displayer
+
+
+
     
 
