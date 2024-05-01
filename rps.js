@@ -10,73 +10,151 @@ function getComputerChoice() {
 }
 
 function playRound(playerChoice, computerChoice) {
+    
     playerChoice = playerChoice.toLowerCase()
     computerChoice = computerChoice.toLowerCase()
-    let tie = "Tie! :-|"
-    let lose = "You Lose! :("
-    let win = "You win! :)"
 
     if ((playerChoice === "rock" && computerChoice === "scissors")
         || (playerChoice === "paper" && computerChoice === "rock") ||
         (playerChoice === "scissors" && computerChoice === "paper")) {
-        console.log(win)
+        return "win"
+
     } else if (playerChoice === computerChoice) {
-        console.log(tie)
+        //pass
     } else {
-        console.log(lose)
+        return "lose"
     }
-    
 }
 
-function playGame(num_of_rounds) {
-    p_score = 0
-    c_score = 0
 
-    for (let i = 0; i < num_of_rounds; i++) {
-        const playerChoice = prompt("Rock, Paper, or Scissors: ")
-        const computerChoice = getComputerChoice()
-        play = playRound(playerChoice, computerChoice)
-        console.log(playerChoice)
-        console.log(computerChoice)
-        console.log(play)
-        if (play === "You win! :") {
-            p_score += 1
-        } else if (play === "Tie! :-|") {
-            continue
-        }
-        else if (play === "You Lose! :("){
-            c_score += 1
-        }
-    
-    }
-    console.log("Player score: " + p_score)
-    console.log("Computer score: " + c_score)
-    
+function disableButtons(){
+    document.getElementById("Rock").disabled = true;
+    document.getElementById("Scissors").disabled = true;
+    document.getElementById("Paper").disabled = true;
 }
+p_score = 0
+c_score = 0
+const results = document.querySelector("#results")
+
+const playerScore = document.createElement("div")
+playerScore.classList.add("p_score")
+
+const compScore = document.createElement("div")
+compScore.classList.add("c_score")
+
+const compChoice = document.createElement("div")
+compChoice.classList.add("comp_choice")
+
+const winner = document.createElement("div")
+winner.classList.add("winner")
 
 const rockBtn = document.querySelector("#Rock");
 
 rockBtn.addEventListener("click", () =>{
     console.clear() 
-    playRound("rock", getComputerChoice())
+    comp_choice = getComputerChoice()
+    score = playRound("rock", comp_choice)
+    if (score === "win"){
+        p_score += 1
+
+    } else if (score === "lose"){
+        c_score += 1
+    }else{
+        //pass
+    }
+
+    if (p_score == 5){
+        winner.textContent = "Player Wins!"
+        results.appendChild(winner)
+        disableButtons()
+    }else if (c_score == 5){
+        winner.textContent = "Computer Wins!"
+        results.appendChild(winner)
+        disableButtons()
+    }
+
+    playerScore.textContent = "Player Score: " + p_score
+    results.appendChild(playerScore)
+    compScore.textContent = "Computer Score: " + c_score
+    compChoice.textContent = "Computer choice: " + comp_choice
+    results.appendChild(compScore)
+    results.appendChild(compChoice)
+
 });
 
 const paperBtn = document.querySelector("#Paper");
 
 paperBtn.addEventListener("click", () =>{
     console.clear() 
-    playRound("paper", getComputerChoice())
+    comp_choice = getComputerChoice()
+    score = playRound("paper", comp_choice)
+    if (score === "win"){
+        p_score += 1
+
+    } else if (score === "lose"){
+        c_score += 1
+    }else{
+        //pass
+    }
+
+    if (p_score == 5){
+        winner.textContent = "Player Wins!"
+        results.appendChild(winner)
+        disableButtons()
+    }else if (c_score == 5){
+        winner.textContent = "Computer Wins!"
+        results.appendChild(winner)
+        disableButtons()
+    }
+
+    playerScore.textContent = "Player Score: " + p_score
+    results.appendChild(playerScore)
+    compScore.textContent = "Computer Score: " + c_score
+    compChoice.textContent = "Computer choice: " + comp_choice
+    results.appendChild(compScore)
+    results.appendChild(compChoice)
 });
 
 const scissBtn = document.querySelector("#Scissors");
 
 scissBtn.addEventListener("click", () =>{
     console.clear() 
-    playRound("scissors", getComputerChoice())
+    comp_choice = getComputerChoice()
+    score = playRound("scissors", comp_choice)
+    if (score === "win"){
+        p_score += 1
+
+    } else if (score === "lose"){
+        c_score += 1
+    }else{
+        //pass
+    }
+
+    if (p_score == 5){
+        winner.textContent = "Player Wins!"
+        results.appendChild(winner)
+        disableButtons()
+    }else if (c_score == 5){
+        winner.textContent = "Computer Wins!"
+        results.appendChild(winner)
+        disableButtons()
+    }
+    
+    playerScore.textContent = "Player Score: " + p_score
+    results.appendChild(playerScore)
+    compScore.textContent = "Computer Score: " + c_score
+    compChoice.textContent = "Computer choice: " + comp_choice
+    results.appendChild(compScore)
+    results.appendChild(compChoice)
 });
 
-//result displayer
+const restbtn = document.querySelector("#restart")
+restbtn.addEventListener("click", () => {
+    location.reload()
+})
 
+//takeaways: I need to put figure out how to make these into functions
+//because a lot of it is the same code
 
 
     
