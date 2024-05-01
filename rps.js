@@ -110,9 +110,6 @@ restbtn.addEventListener("click", () => {
     location.reload()
 })
 
-//takeaways: I need to put figure out how to make these into functions
-//because a lot of it is the same code
-
 
     
 
