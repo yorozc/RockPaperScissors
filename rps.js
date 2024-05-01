@@ -32,6 +32,36 @@ function disableButtons(){
     document.getElementById("Scissors").disabled = true;
     document.getElementById("Paper").disabled = true;
 }
+
+function scoreChecker(score){
+    if (score === "win"){
+        p_score += 1
+
+    } else if (score === "lose"){
+        c_score += 1
+    }else{
+        //pass
+    }
+
+    if (p_score == 5){
+        winner.textContent = "Player Wins!"
+        results.appendChild(winner)
+        disableButtons()
+    }else if (c_score == 5){
+        winner.textContent = "Computer Wins!"
+        results.appendChild(winner)
+        disableButtons()
+    }
+
+    playerScore.textContent = "Player Score: " + p_score
+    results.appendChild(playerScore)
+    compScore.textContent = "Computer Score: " + c_score
+    compChoice.textContent = "Computer choice: " + comp_choice
+    results.appendChild(compScore)
+    results.appendChild(compChoice)
+}
+
+
 p_score = 0
 c_score = 0
 const results = document.querySelector("#results")
@@ -54,32 +84,7 @@ rockBtn.addEventListener("click", () =>{
     console.clear() 
     comp_choice = getComputerChoice()
     score = playRound("rock", comp_choice)
-    if (score === "win"){
-        p_score += 1
-
-    } else if (score === "lose"){
-        c_score += 1
-    }else{
-        //pass
-    }
-
-    if (p_score == 5){
-        winner.textContent = "Player Wins!"
-        results.appendChild(winner)
-        disableButtons()
-    }else if (c_score == 5){
-        winner.textContent = "Computer Wins!"
-        results.appendChild(winner)
-        disableButtons()
-    }
-
-    playerScore.textContent = "Player Score: " + p_score
-    results.appendChild(playerScore)
-    compScore.textContent = "Computer Score: " + c_score
-    compChoice.textContent = "Computer choice: " + comp_choice
-    results.appendChild(compScore)
-    results.appendChild(compChoice)
-
+    scoreChecker(score)
 });
 
 const paperBtn = document.querySelector("#Paper");
@@ -88,31 +93,7 @@ paperBtn.addEventListener("click", () =>{
     console.clear() 
     comp_choice = getComputerChoice()
     score = playRound("paper", comp_choice)
-    if (score === "win"){
-        p_score += 1
-
-    } else if (score === "lose"){
-        c_score += 1
-    }else{
-        //pass
-    }
-
-    if (p_score == 5){
-        winner.textContent = "Player Wins!"
-        results.appendChild(winner)
-        disableButtons()
-    }else if (c_score == 5){
-        winner.textContent = "Computer Wins!"
-        results.appendChild(winner)
-        disableButtons()
-    }
-
-    playerScore.textContent = "Player Score: " + p_score
-    results.appendChild(playerScore)
-    compScore.textContent = "Computer Score: " + c_score
-    compChoice.textContent = "Computer choice: " + comp_choice
-    results.appendChild(compScore)
-    results.appendChild(compChoice)
+    scoreChecker(score)
 });
 
 const scissBtn = document.querySelector("#Scissors");
@@ -121,31 +102,7 @@ scissBtn.addEventListener("click", () =>{
     console.clear() 
     comp_choice = getComputerChoice()
     score = playRound("scissors", comp_choice)
-    if (score === "win"){
-        p_score += 1
-
-    } else if (score === "lose"){
-        c_score += 1
-    }else{
-        //pass
-    }
-
-    if (p_score == 5){
-        winner.textContent = "Player Wins!"
-        results.appendChild(winner)
-        disableButtons()
-    }else if (c_score == 5){
-        winner.textContent = "Computer Wins!"
-        results.appendChild(winner)
-        disableButtons()
-    }
-    
-    playerScore.textContent = "Player Score: " + p_score
-    results.appendChild(playerScore)
-    compScore.textContent = "Computer Score: " + c_score
-    compChoice.textContent = "Computer choice: " + comp_choice
-    results.appendChild(compScore)
-    results.appendChild(compChoice)
+    scoreChecker(score)
 });
 
 const restbtn = document.querySelector("#restart")
